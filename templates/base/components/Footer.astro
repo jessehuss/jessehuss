@@ -21,7 +21,7 @@ const { siteName, contactEmail, social, nav } = Astro.props;
       <div>
         <h3 class="text-lg font-bold mb-4">{siteName}</h3>
         <p class="text-gray-400 text-sm mb-4">
-          Beautiful landscapes that grow with you.
+          Full-stack development, modern web applications, and scalable cloud solutions. Turning your ideas into reality, one line of code at a time.
         </p>
         {social && (
           <div class="flex space-x-4">
@@ -60,7 +60,7 @@ const { siteName, contactEmail, social, nav } = Astro.props;
       <div>
         <h4 class="font-semibold mb-4">Contact</h4>
         <p class="text-gray-400 text-sm mb-2">
-          Email: <a href={`mailto:${contactEmail}`} class="hover:text-white transition-colors">{contactEmail}</a>
+          Email: <a href="/contact" class="hover:text-white transition-colors">{contactEmail}</a>
         </p>
       </div>
     </div>

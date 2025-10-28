@@ -36,58 +36,56 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-  siteName: "Acme Landscaping",
-  tagline: "Beautiful landscapes that grow with you",
-  logo: "/assets/logos/acme.svg",
-  primaryColor: "#2F855A",
-  secondaryColor: "#38B2AC",
-  accentColor: "#ED8936",
-  contactEmail: "info@acmelandscaping.ca",
-  domain: "acmelandscaping.ca",
-  showBlog: true,
-  template: "base",
+  siteName: "Jesse Huss",
+  tagline: "Full Stack Engineer & Freelance Developer",
+  logo: "/assets/logos/jessehusssmall.png",
+  primaryColor: "#3B82F6",
+  secondaryColor: "#8B5CF6",
+  accentColor: "#10B981",
+  contactEmail: "admin@jessehuss.com",
+  domain: "jessehuss.com",
+  showBlog: false,
+  template: "tech",
   nav: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/#services" },
-    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" }
   ],
   social: {
-    twitter: "https://twitter.com/acmelandscaping",
-    facebook: "https://facebook.com/acmelandscaping",
-    instagram: "https://instagram.com/acmelandscaping"
+    github: "https://github.com/jessehuss",
+    linkedin: "https://linkedin.com/in/jessehuss"
   },
   hero: {
-    headline: "Transform Your Outdoor Space",
-    subheadline: "Professional landscaping services that enhance your property's beauty and value",
-    ctaText: "Get Started",
+    headline: "Custom Software Solutions for Your Business",
+    subheadline: "Full-stack development, modern web applications, and scalable cloud solutions. Turning your ideas into reality, one line of code at a time.",
+    ctaText: "Start a Project",
     ctaLink: "/contact"
   },
   services: [
     {
-      title: "Lawn Care",
-      description: "Regular maintenance to keep your lawn looking pristine all year round",
-      icon: "🌱"
+      title: "Web Development",
+      description: "Modern, responsive web applications built with cutting-edge technologies like React, Next.js, and Astro",
+      icon: "💻"
     },
     {
-      title: "Garden Design",
-      description: "Custom garden designs tailored to your space and preferences",
-      icon: "🌿"
+      title: "Full Stack Solutions",
+      description: "End-to-end development from database design to API development and frontend implementation",
+      icon: "⚡"
     },
     {
-      title: "Tree Services",
-      description: "Tree planting, trimming, and removal services by certified arborists",
-      icon: "🌳"
+      title: "Cloud Architecture",
+      description: "Scalable cloud solutions using AWS, Vercel, and modern deployment practices for production-ready apps",
+      icon: "☁️"
     },
     {
-      title: "Hardscaping",
-      description: "Patios, walkways, and retaining walls to complete your landscape",
-      icon: "🪨"
+      title: "Code Consulting",
+      description: "Technical reviews, refactoring, and architecture guidance to improve your existing codebase",
+      icon: "🔍"
     }
   ],
   about: {
-    title: "Your Trusted Landscaping Partners",
-    description: "With over 15 years of experience, Acme Landscaping has been transforming outdoor spaces across the region. We combine expertise, quality materials, and attention to detail to deliver results that exceed expectations.",
+    title: "Experienced Developer, Reliable Partner",
+    description: "I'm a full-stack engineer specializing in modern web technologies and cloud-native applications. With expertise in JavaScript, TypeScript, and various frameworks, I help businesses build robust software solutions. Whether you need a new application, API integration, or technical consultation, I deliver clean, maintainable code that scales with your business needs.",
     image: "/assets/images/about.jpg"
   }
 };
