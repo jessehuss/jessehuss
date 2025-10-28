@@ -2,7 +2,7 @@
 backend:
   name: git-gateway
   repo: jessehuss/jessehuss
-  branch: main
+  branch: master
   auth_type: pkce
   base_url: https://auth.decapbridge.com
   auth_endpoint: /sites/ee096455-9809-405d-b48a-0f13b0ec3ff4/pkce
