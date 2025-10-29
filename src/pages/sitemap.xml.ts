@@ -2,8 +2,13 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import siteConfig from '../config/site.config';
 
-export const GET: APIRoute = async ({ url }) => {
-  const baseUrl = url.origin;
+export const GET: APIRoute = async ({ site }) => {
+  // Use site from Astro.config.mjs if available, otherwise use siteConfig.domain
+  // Ensure it starts with https://
+  const domain = siteConfig.domain.startsWith('http') 
+    ? siteConfig.domain 
+    : `https://${siteConfig.domain}`;
+  const baseUrl = site || domain;
   const currentDate = new Date().toISOString().split('T')[0];
 
   // Get all blog posts

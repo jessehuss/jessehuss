@@ -10,6 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 // Hybrid site configuration (static pages + server endpoints)
 export default defineConfig({
+  site: 'https://jessehuss.com',
   output: 'hybrid',
   adapter: cloudflare(),
   integrations: [
