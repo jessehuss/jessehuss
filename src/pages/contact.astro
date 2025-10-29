@@ -8,7 +8,12 @@ const primaryColor = siteConfig.primaryColor;
 const template = siteConfig.template;
 ---
 
-<BaseLayout siteConfig={siteConfig} title="Contact Us" description="Get in touch with us">
+<BaseLayout 
+  siteConfig={siteConfig} 
+  title="Contact Us" 
+  description="Get in touch with us for custom software solutions, web development, and technical consulting"
+  keywords={['contact', 'freelance developer', 'web development services', 'software consulting']}
+>
   <section class={`py-32 ${
     template === 'dark' || template === 'tech' ? 'bg-slate-950' 
     : template === 'gradient' ? 'bg-gradient-to-br from-gray-50 via-white to-gray-100' 

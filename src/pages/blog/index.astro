@@ -10,7 +10,12 @@ const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
 const primaryColor = siteConfig.primaryColor;
 ---
 
-<BaseLayout siteConfig={siteConfig} title="Blog" description="Read our latest news and insights">
+<BaseLayout 
+  siteConfig={siteConfig} 
+  title="Blog" 
+  description="Read our latest news and insights on web development, software engineering, and technology trends"
+  keywords={['blog', 'web development blog', 'software engineering', 'tech insights', 'development tips']}
+>
   <section class={`py-32 ${
     siteConfig.template === 'dark' || siteConfig.template === 'tech' ? 'bg-slate-950' 
     : siteConfig.template === 'gradient' ? 'bg-gradient-to-br from-gray-50 to-gray-100' 

@@ -39,7 +39,12 @@ const services = servicesContent.length > 0
 const primaryColor = siteConfig.primaryColor;
 ---
 
-<BaseLayout siteConfig={mergedConfig} title={mergedConfig.hero?.headline} description={siteConfig.tagline}>
+<BaseLayout 
+  siteConfig={mergedConfig} 
+  title={mergedConfig.hero?.headline || siteConfig.siteName} 
+  description={siteConfig.tagline || ''}
+  keywords={['web development', 'full stack development', 'software development', 'custom software', 'cloud solutions', 'freelance developer', 'web applications']}
+>
   <Hero 
     headline={mergedConfig.hero?.headline || 'Welcome'}
     subheadline={mergedConfig.hero?.subheadline || ''}
