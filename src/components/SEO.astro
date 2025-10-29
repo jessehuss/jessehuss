@@ -133,7 +133,7 @@ if (type === 'article' && publishedTime) {
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     {author && <meta property="article:author" content={author} />}
     {tags.map((tag) => (
-      <meta key={tag} property="article:tag" content={tag} />
+      <meta property="article:tag" content={tag} />
     ))}
   </>
 )}
@@ -151,9 +151,9 @@ if (type === 'article' && publishedTime) {
 )}
 
 <!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
 {articleSchema && (
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
 )}
 
