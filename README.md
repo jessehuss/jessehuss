@@ -3,7 +3,7 @@
 ![Header](https://img.shields.io/badge/Full-Stack%20Developer-blue?style=flat&logo=appveyor)  
 Senior Software Engineer | Problem Solver | Technology Enthusiast
 
-[jessehuss.com](https://www.jessehuss.com)  
+[jessehuss.com](https://jessehuss.com)  
 
 ---
 
