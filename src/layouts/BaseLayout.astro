@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+import { site } from '../content/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.tagline,
+  path = '/',
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = title === site.name ? title : `${title} · ${site.name}`;
+const canonical = new URL(path, site.url).toString();
+const ogImage = new URL('/og.png', site.url).toString();
+// Cloudflare Pages injects CF_PAGES_BRANCH at build time.
+const branch = import.meta.env.CF_PAGES_BRANCH || '';
+const isPreviewBuild = Boolean(branch && branch !== 'master');
+const robots =
+  noindex || isPreviewBuild ? 'noindex, nofollow' : 'index, follow';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#F7F4EF" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="logo" href="/">{site.name}</a>
+        <nav class="nav" aria-label="Primary">
+          {
+            site.nav.map((item) => (
+              <a
+                href={item.href}
+                aria-current={path === item.href ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="site-main">
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap site-footer__inner">
+        <p>&copy; {new Date().getFullYear()} {site.name}</p>
+        <p>
+          <a href={site.social.github}>GitHub</a>
+          ·
+          <a href={site.social.linkedin}>LinkedIn</a>
+          ·
+          <a href="/contact">Contact</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
