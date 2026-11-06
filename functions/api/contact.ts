@@ -122,7 +122,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!res.ok) {
     const detail = await res.text().catch(() => '');
     console.error('Resend error', res.status, detail.slice(0, 300));
-    return json({ error: 'Could not send your message. Please try again shortly.' }, 502);
+    let code = 'unknown';
+    try { code = (JSON.parse(detail).name || JSON.parse(detail).message || '').toString().slice(0, 80); } catch {}
+    return json({ error: 'Could not send your message. Please try again shortly.', resendStatus: res.status, resendCode: code }, 502);
   }
 
   return json({ message: 'Thanks — your message is on its way.' }, 200);
