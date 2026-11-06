@@ -9,7 +9,6 @@ export const site = {
   emailDisplay: null as string | null, // never put personal Gmail in HTML
   social: {
     github: 'https://github.com/jessehuss',
-    // EDIT: confirm the correct LinkedIn URL before launch
     linkedin: 'https://www.linkedin.com/in/jhuss',
   },
   /** Path under /public — swap the file to change the photo */
@@ -17,7 +16,7 @@ export const site = {
     src: '/images/avatar.jpg',
     alt: 'Portrait of Jesse Huss',
   },
-  // EDIT: headline — draft from rebuild brief; change freely
+  // EDIT: headline
   headline: 'I build useful software.',
   // EDIT: short supporting line under the headline
   tagline:
@@ -38,13 +37,16 @@ export type ProjectStatus = 'live' | 'in-progress';
 export type Project = {
   id: string;
   name: string;
-  /** One-line summary for cards */
   summary: string;
-  /** Longer blurb for /work */
   description: string;
   href: string | null;
   status: ProjectStatus;
   statusLabel: string;
+  logo: string;
+  logoAlt: string;
+  image: string;
+  imageAlt: string;
+  accent: string;
 };
 
 export const projects: Project[] = [
@@ -59,6 +61,11 @@ export const projects: Project[] = [
     href: 'https://scriptureshelf.com',
     status: 'live',
     statusLabel: 'Live',
+    logo: '/images/logos/scriptureshelf.svg',
+    logoAlt: 'ScriptureShelf logo',
+    image: '/images/work/scriptureshelf-shot.webp',
+    imageAlt: 'ScriptureShelf bookshelf showing Bible books filling as chapters are marked read',
+    accent: '#2f4b3a',
   },
   {
     id: 'hcg',
@@ -71,6 +78,11 @@ export const projects: Project[] = [
     href: 'https://hussconsultinggroup.com',
     status: 'live',
     statusLabel: 'Live',
+    logo: '/images/logos/hcg-mark.svg',
+    logoAlt: 'Huss Consulting Group mark',
+    image: '/images/work/hcg.webp',
+    imageAlt: 'Huss Consulting Group website homepage',
+    accent: '#17150F',
   },
   {
     id: 'wager',
@@ -83,5 +95,10 @@ export const projects: Project[] = [
     href: 'https://wager.jessehuss.com',
     status: 'in-progress',
     statusLabel: 'In progress',
+    logo: '/images/logos/wager.svg',
+    logoAlt: 'Wager logo',
+    image: '/images/work/wager.webp',
+    imageAlt: 'Wager brand tile with W mark and pennant',
+    accent: '#0A0F1C',
   },
 ];

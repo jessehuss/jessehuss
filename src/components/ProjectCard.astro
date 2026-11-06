@@ -1,41 +1,88 @@
 ---
 import type { Project } from '../content/site';
+
 interface Props {
   project: Project;
+  index?: number;
 }
-const { project } = Astro.props;
+
+const { project, index = 0 } = Astro.props;
+const host = project.href ? new URL(project.href).host.replace(/^www\./, '') : '';
+const delayClass =
+  index === 1 ? 'reveal-delay-1' : index === 2 ? 'reveal-delay-2' : index === 3 ? 'reveal-delay-3' : '';
 ---
 
-<article class="card">
-  <h3>{project.name}</h3>
-  <p>{project.summary}</p>
-  <div class="card__meta">
-    <span class={`badge ${project.status === 'in-progress' ? 'badge--progress' : ''}`}>
-      {project.statusLabel}
-    </span>
-    {
-      project.href ? (
-        <a class="card__link" href={project.href} rel="noopener noreferrer">
-          Visit
-          <span class="visually-hidden"> {project.name}</span>
-        </a>
-      ) : (
-        <span class="card__link" style="color: var(--ink-faint);">Coming later</span>
-      )
-    }
-  </div>
-</article>
-
-<style>
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-</style>
+{
+  project.href ? (
+    <a class={`work-card reveal ${delayClass}`} href={project.href} rel="noopener noreferrer">
+      <div class="work-card__frame">
+        <div class="browser-chrome" aria-hidden="true">
+          <div class="browser-chrome__bar">
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__url">{host}</span>
+          </div>
+          <img
+            class="browser-chrome__shot"
+            src={project.image}
+            alt=""
+            width="960"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <div class="work-card__body">
+        <div class="work-card__brand">
+          <img src={project.logo} alt="" width="32" height="32" loading="lazy" decoding="async" />
+          <h3>{project.name}</h3>
+        </div>
+        <p>{project.summary}</p>
+        <div class="work-card__meta">
+          <span class={`badge ${project.status === 'in-progress' ? 'badge--progress' : ''}`}>
+            {project.statusLabel}
+          </span>
+          <span class="work-card__cta">
+            Visit<span class="visually-hidden"> {project.name}</span>
+          </span>
+        </div>
+      </div>
+    </a>
+  ) : (
+    <article class={`work-card reveal ${delayClass}`}>
+      <div class="work-card__frame">
+        <div class="browser-chrome" aria-hidden="true">
+          <div class="browser-chrome__bar">
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__dot" />
+            <span class="browser-chrome__url">Coming later</span>
+          </div>
+          <img
+            class="browser-chrome__shot"
+            src={project.image}
+            alt={project.imageAlt}
+            width="960"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <div class="work-card__body">
+        <div class="work-card__brand">
+          <img src={project.logo} alt={project.logoAlt} width="32" height="32" loading="lazy" />
+          <h3>{project.name}</h3>
+        </div>
+        <p>{project.summary}</p>
+        <div class="work-card__meta">
+          <span class={`badge ${project.status === 'in-progress' ? 'badge--progress' : ''}`}>
+            {project.statusLabel}
+          </span>
+        </div>
+      </div>
+    </article>
+  )
+}

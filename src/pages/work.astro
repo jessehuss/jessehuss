@@ -8,34 +8,74 @@ import { projects } from '../content/site';
   description="Selected projects: ScriptureShelf, Huss Consulting Group, and Wager."
   path="/work"
 >
-  <div class="prose">
+  <div class="prose reveal">
     <h1>Work</h1>
     <p>
-      A short list of things I am building or running. No filler case studies —
-      just honest status and links.
+      A short list of things I am building or running — with the real products,
+      not filler case studies.
     </p>
   </div>
 
-  <div class="project-list" style="margin-top: 1.5rem;">
+  <div class="project-list">
     {
-      projects.map((project) => (
-        <article class="project">
-          <header>
-            <h2>{project.name}</h2>
-            <span
-              class={`badge ${project.status === 'in-progress' ? 'badge--progress' : ''}`}
-            >
-              {project.statusLabel}
-            </span>
-          </header>
-          <p>{project.description}</p>
-          {project.href && (
-            <a href={project.href} rel="noopener noreferrer">
-              Open {project.name}
-            </a>
-          )}
-        </article>
-      ))
+      projects.map((project, i) => {
+        const host = project.href
+          ? new URL(project.href).host.replace(/^www\./, '')
+          : '';
+        const delay =
+          i === 1 ? 'reveal-delay-1' : i === 2 ? 'reveal-delay-2' : '';
+        return (
+          <article class={`case reveal ${delay}`}>
+            <div class="case__media">
+              <div class="browser-chrome">
+                <div class="browser-chrome__bar" aria-hidden="true">
+                  <span class="browser-chrome__dot" />
+                  <span class="browser-chrome__dot" />
+                  <span class="browser-chrome__dot" />
+                  <span class="browser-chrome__url">{host || 'Local preview'}</span>
+                </div>
+                <img
+                  class="browser-chrome__shot"
+                  src={project.image}
+                  alt={project.imageAlt}
+                  width="960"
+                  height="600"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </div>
+            </div>
+            <div class="case__body">
+              <div class="case__brand">
+                <img
+                  src={project.logo}
+                  alt={project.logoAlt}
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
+                <div>
+                  <h2>{project.name}</h2>
+                </div>
+              </div>
+              <span
+                class={`badge ${project.status === 'in-progress' ? 'badge--progress' : ''}`}
+                style="align-self: flex-start;"
+              >
+                {project.statusLabel}
+              </span>
+              <p>{project.description}</p>
+              <div class="case__actions">
+                {project.href && (
+                  <a class="btn btn--primary" href={project.href} rel="noopener noreferrer">
+                    Open {project.name}
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })
     }
   </div>
 </BaseLayout>

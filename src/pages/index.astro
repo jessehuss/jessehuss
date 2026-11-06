@@ -6,7 +6,8 @@ import { site, projects } from '../content/site';
 
 <BaseLayout title={site.name} description={site.tagline} path="/">
   <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero__copy">
+    <div class="hero__copy reveal">
+      <p class="hero__eyebrow">Builder · Lethbridge</p>
       <h1 id="hero-heading">{site.headline}</h1>
       <p>{site.tagline}</p>
       <div class="hero__actions">
@@ -14,12 +15,12 @@ import { site, projects } from '../content/site';
         <a class="btn btn--ghost" href="/contact">Get in touch</a>
       </div>
     </div>
-    <div class="hero__photo">
+    <div class="hero__photo reveal reveal-delay-1">
       <img
         src={site.photo.src}
         alt={site.photo.alt}
-        width="280"
-        height="280"
+        width="300"
+        height="300"
         decoding="async"
         fetchpriority="high"
       />
@@ -32,7 +33,7 @@ import { site, projects } from '../content/site';
       <a href="/work">All projects</a>
     </div>
     <div class="card-grid">
-      {projects.map((project) => <ProjectCard project={project} />)}
+      {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
     </div>
   </section>
 
