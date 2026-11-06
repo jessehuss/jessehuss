@@ -140,5 +140,13 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     });
   }
+  if (context.request.method === 'GET') {
+    return json({
+      configured: Boolean(context.env.RESEND_API_KEY && context.env.TO_EMAIL),
+      hasResend: Boolean(context.env.RESEND_API_KEY),
+      hasTo: Boolean(context.env.TO_EMAIL),
+      hasFrom: Boolean(context.env.FROM_EMAIL),
+    });
+  }
   return json({ error: 'Method not allowed.' }, 405);
 };
