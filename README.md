@@ -26,3 +26,5 @@ Required Pages env vars (preview **and** production):
 | `TO_EMAIL` | Delivery inbox (not rendered in HTML) |
 
 Contact form: `POST /api/contact` (Pages Function). Personal Gmail is never embedded in page HTML.
+
+Preview and production both need a Resend API key that is **authorized to send from `jessehuss.com`** (e.g. `admin@jessehuss.com`). Do not reuse an HCG or other-project key.
