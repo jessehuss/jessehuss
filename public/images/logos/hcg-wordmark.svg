@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" fill="none" role="img" aria-label="Huss Consulting Group">
+  <rect x="0" y="8" width="64" height="64" rx="14" fill="#0B1220"/>
+  <path d="M14 54V26h5.6v10.1L30.8 26H36.6l-11.3 12L37.2 54h-6.4L21.6 42.5V54H14z" fill="#FFFFFF"/>
+  <path d="M40 54V26h5.4v28H40z" fill="#38BDF8"/>
+  <text x="84" y="48" font-family="DM Sans, Inter, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0B1220" letter-spacing="-0.02em">Huss Consulting Group</text>
+</svg>
